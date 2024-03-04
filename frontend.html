@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regex101 Clone</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        form {
+            width: 50%;
+            margin: 0 auto;
+        }
+        
+        label {
+            font-weight: bold;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to Regex101 Clone</h1>
+    <hr>
+    <form action="" method="POST">
+        <label for="regex">Enter Regular Expression:</label><br>
+        <input type="text" id="regex" name="regex" value="{{ regex }}"><br><br>
+        <label for="string">Enter String:</label><br>
+        <input type="text" id="string" name="string" value="{{ string }}"><br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div class="result">
+        {% if count > 0 %}
+        <h3>Result:</h3>
+        <p>{{ ans }}</p>
+        <h3>Total Matches: {{ count }}</h3>
+        <h3>Locations:</h3>
+        <ul>
+            {% for span in spans %}
+            <li>{{ span }}</li>
+            {% endfor %}
+        </ul>
+        {% elif count == -1 %}
+        <p>Match Not Found!</p>
+        {% else %}
+        <p>No matches yet. Submit a regular expression and a string to find matches.</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>
